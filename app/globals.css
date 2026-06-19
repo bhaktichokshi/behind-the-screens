@@ -292,6 +292,24 @@ button {
     linear-gradient(to bottom, transparent 72%, rgba(43, 41, 36, 0.04));
 }
 
+.postit-link-mark {
+  position: absolute;
+  right: 8px;
+  bottom: 6px;
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  border: 1px solid rgba(43, 41, 36, 0.16);
+  border-radius: 999px;
+  background: rgba(251, 248, 240, 0.54);
+  color: rgba(43, 41, 36, 0.58);
+  font-family: var(--mono);
+  font-size: 10px;
+  line-height: 1;
+  pointer-events: none;
+}
+
 .postit-node:active {
   cursor: grabbing;
 }
@@ -304,8 +322,7 @@ button {
 }
 
 .postit-node:focus-visible,
-.center-diary-card:focus-visible,
-.panel-close:focus-visible {
+.center-diary-card:focus-visible {
   outline: 2px solid var(--gold);
   outline-offset: 4px;
 }
@@ -366,60 +383,39 @@ button {
   transform: rotate(-5deg);
 }
 
-.panel-scrim {
-  position: fixed;
-  inset: 0;
-  z-index: 25;
-  pointer-events: none;
-  background: rgba(43, 41, 36, 0.24);
-  opacity: 0;
-  transition: opacity 240ms ease;
-}
-
-.panel-scrim.is-open {
-  pointer-events: auto;
-  opacity: 1;
-}
-
-.diary-panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 30;
-  width: 390px;
-  max-width: 88vw;
-  height: 100vh;
-  height: 100dvh;
-  padding: 86px 34px 34px 56px;
-  overflow-y: auto;
-  border-left: 1px solid var(--line);
+.desk-entry-card {
+  position: absolute;
+  top: 50%;
+  right: 28px;
+  z-index: 4;
+  width: min(320px, 26vw);
+  max-height: calc(100% - 96px);
+  padding: 38px 24px 24px 42px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 24px;
   background:
     repeating-linear-gradient(var(--card) 0 31px, var(--rule) 32px, var(--card) 33px),
     var(--card);
-  box-shadow: -18px 0 40px rgba(43, 41, 36, 0.12);
-  transform: translateX(100%);
-  transition: transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 16px 34px rgba(43, 41, 36, 0.14);
+  transform: translateY(-50%) rotate(2deg);
 }
 
-.diary-panel.is-open {
-  transform: translateX(0);
-}
-
-.diary-panel::before {
+.desk-entry-card::before {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 42px;
+  left: 30px;
   width: 1.5px;
   content: "";
   background: var(--margin);
   opacity: 0.48;
 }
 
-.diary-panel::after {
+.desk-entry-card::after {
   position: absolute;
   top: -9px;
-  left: 36px;
+  left: 28px;
   width: 84px;
   height: 25px;
   content: "";
@@ -427,22 +423,6 @@ button {
   box-shadow: 0 2px 6px rgba(43, 41, 36, 0.18);
   opacity: 0.62;
   transform: rotate(-4deg);
-}
-
-.panel-close {
-  position: absolute;
-  top: 22px;
-  right: 22px;
-  display: grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  cursor: pointer;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  background: var(--card);
-  color: var(--ink-soft);
-  font-size: 18px;
 }
 
 .panel-kicker {
@@ -465,10 +445,10 @@ button {
   background: var(--panel-color, var(--gold));
 }
 
-.diary-panel h2 {
+.desk-entry-card h2 {
   margin: 0 0 18px;
   font-family: var(--display);
-  font-size: 30px;
+  font-size: 25px;
   line-height: 1.18;
   letter-spacing: -0.04em;
 }
@@ -477,8 +457,8 @@ button {
   margin: 0;
   color: #3a362e;
   font-family: var(--hand);
-  font-size: 22px;
-  line-height: 1.75;
+  font-size: 18px;
+  line-height: 1.62;
 }
 
 .panel-entries {
@@ -578,6 +558,24 @@ button {
 
   .desk-artifact {
     display: none;
+  }
+
+  .desk-entry-card {
+    right: 14px;
+    bottom: 14px;
+    top: auto;
+    width: min(260px, calc(100vw - 56px));
+    max-height: 32%;
+    padding: 32px 18px 18px 34px;
+    transform: rotate(1deg);
+  }
+
+  .desk-entry-card h2 {
+    font-size: 21px;
+  }
+
+  .panel-body {
+    font-size: 16px;
   }
 }
 

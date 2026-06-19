@@ -188,6 +188,37 @@ export function PersonalPortfolio() {
           </aside>
         ))}
 
+        <aside
+          className="desk-entry-card"
+          style={{ "--panel-color": activeEntry?.color ?? "#a9783c" } as CSSProperties}
+          aria-live="polite"
+        >
+          <p className="panel-kicker">diary entry</p>
+          <h2>{activeEntry?.title ?? "hover, click, or drag a note"}</h2>
+          <p className="panel-body">
+            {activeEntry?.body ??
+              "The page stays still now. The desk note changes in place instead of opening a side panel."}
+          </p>
+          {activeEntry?.entries?.length ? (
+            <div className="panel-entries">
+              {activeEntry.entries.map((entry) => (
+                <article key={`${entry.title}-${entry.date ?? "undated"}`} className="panel-entry">
+                  {entry.date ? <time>{entry.date}</time> : null}
+                  <h3>{entry.title}</h3>
+                  <p>{entry.body}</p>
+                  {entry.tags?.length ? (
+                    <ul>
+                      {entry.tags.map((tag) => (
+                        <li key={tag}>{tag}</li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </article>
+              ))}
+            </div>
+          ) : null}
+        </aside>
+
         {interestNodes.map((node, index) => {
           const position = positions[node.id];
           const isActive = activeEntry?.id === node.id;
@@ -223,7 +254,10 @@ export function PersonalPortfolio() {
                 } as CSSProperties
               }
             >
-              {node.label}
+              <span>{node.label}</span>
+              <span className="postit-link-mark" aria-hidden="true">
+                ↗
+              </span>
             </button>
           );
         })}
@@ -240,38 +274,6 @@ export function PersonalPortfolio() {
         </nav>
       </footer>
 
-      <div className={`panel-scrim ${activeEntry ? "is-open" : ""}`} onClick={() => setActiveEntry(null)} />
-
-      <aside
-        className={`diary-panel ${activeEntry ? "is-open" : ""}`}
-        aria-hidden={!activeEntry}
-        style={{ "--panel-color": activeEntry?.color ?? "#a9783c" } as CSSProperties}
-      >
-        <button className="panel-close" type="button" aria-label="Close" onClick={() => setActiveEntry(null)}>
-          ×
-        </button>
-        <p className="panel-kicker">diary entry</p>
-        <h2>{activeEntry?.title}</h2>
-        <p className="panel-body">{activeEntry?.body}</p>
-        {activeEntry?.entries?.length ? (
-          <div className="panel-entries">
-            {activeEntry.entries.map((entry) => (
-              <article key={`${entry.title}-${entry.date ?? "undated"}`} className="panel-entry">
-                {entry.date ? <time>{entry.date}</time> : null}
-                <h3>{entry.title}</h3>
-                <p>{entry.body}</p>
-                {entry.tags?.length ? (
-                  <ul>
-                    {entry.tags.map((tag) => (
-                      <li key={tag}>{tag}</li>
-                    ))}
-                  </ul>
-                ) : null}
-              </article>
-            ))}
-          </div>
-        ) : null}
-      </aside>
     </main>
   );
 }
