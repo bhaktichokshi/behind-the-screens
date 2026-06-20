@@ -5,7 +5,7 @@ export const identity = {
   title: "Data Engineer II",
   email: "chokshibhakti13@gmail.com",
   resume: "/Bhakti_Chokshi_Resume.pdf",
-  tagline: "a diary-desk mosaic, not a niche",
+  tagline: "a diary-desk mosaic",
   centerNote: "A mosaic of things I have liked, practiced, studied, or cared about.",
   thesis: "A non-scrollable desk page: diary entries, artifacts, and a living graph of interests."
 };
@@ -13,14 +13,14 @@ export const identity = {
 export const socials = [
   { label: "LinkedIn", href: "https://www.linkedin.com/in/bhakti-chokshi/" },
   { label: "GitHub", href: "https://github.com/bhaktichokshi" },
-  { label: "Substack", href: "https://bhaktichokshi.substack.com" },
   { label: "Instagram", href: "https://www.instagram.com/bhaktichokshi/" },
+  { label: "Duolingo", href: "https://www.duolingo.com/profile/bhakti.chokshi" },
   { label: "Resume", href: identity.resume }
 ];
 
 export const centerEntry = {
-  eyebrow: "not a niche",
-  title: "A mosaic, not a niche",
+  eyebrow: "diary note",
+  title: "A mosaic",
   body:
     "I journal because thinking needs somewhere to land. This page is built like that: not a funnel, not a pitch, but a desk of notes, artifacts, and interests that have shaped me."
 };

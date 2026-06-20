@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://behind-the-screens.dev"),
   openGraph: {
     title: "Bhakti Chokshi",
-    description: "A diary-desk mosaic, not a niche.",
+    description: "A diary-desk mosaic.",
     type: "website"
   }
 };

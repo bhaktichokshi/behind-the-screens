@@ -1,12 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#f1ecdf" />
   <path
-    d="M15 12h34c2.2 0 4 1.8 4 4v24L39 54H15c-2.2 0-4-1.8-4-4V16c0-2.2 1.8-4 4-4Z"
-    fill="#fff0a8"
+    d="M14 10h30l10 10v30c0 2.2-1.8 4-4 4H14c-2.2 0-4-1.8-4-4V14c0-2.2 1.8-4 4-4Z"
+    fill="#f6e48a"
     stroke="#2b2924"
-    stroke-opacity=".24"
-    stroke-width="2"
+    stroke-width="1.25"
+    stroke-linejoin="round"
   />
-  <path d="M39 54V42c0-1.1.9-2 2-2h12L39 54Z" fill="#e3c879" />
-  <path d="M21 24h22M21 32h18M21 40h13" stroke="#2b2924" stroke-opacity=".48" stroke-width="3" stroke-linecap="round" />
 </svg>

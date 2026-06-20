@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { type CSSProperties, type PointerEvent, useEffect, useMemo, useRef, useState } from "react";
 
 import { centerEntry, deskArtifacts, identity, interestNodes, socials } from "@/content/portfolio";
@@ -124,7 +125,7 @@ export function PersonalPortfolio() {
     });
   }
 
-  function moveNode(id: NodeId, event: PointerEvent<HTMLButtonElement>) {
+  function moveNode(id: NodeId, event: PointerEvent<HTMLAnchorElement>) {
     const desk = deskRef.current;
 
     if (!desk) {
@@ -147,7 +148,6 @@ export function PersonalPortfolio() {
         <span>
           <strong>{identity.name}</strong> — {identity.tagline}
         </span>
-        <span className="portfolio-hint">hover · click · drag</span>
       </header>
 
       <section ref={deskRef} className="diary-desk" aria-label="Diary desk mosaic">
@@ -224,12 +224,12 @@ export function PersonalPortfolio() {
           const isActive = activeEntry?.id === node.id;
 
           return (
-            <button
+            <Link
               key={node.id}
-              type="button"
+              href={`/${node.id}`}
               className={`postit-node ${isActive ? "is-active" : ""}`}
               onMouseEnter={() => activateNode(node)}
-              onClick={() => activateNode(node)}
+              onFocus={() => activateNode(node)}
               onPointerDown={(event) => {
                 event.currentTarget.setPointerCapture(event.pointerId);
                 setDraggingId(node.id);
@@ -258,7 +258,7 @@ export function PersonalPortfolio() {
               <span className="postit-link-mark" aria-hidden="true">
                 ↗
               </span>
-            </button>
+            </Link>
           );
         })}
       </section>
